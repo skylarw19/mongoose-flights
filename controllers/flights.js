@@ -1,27 +1,51 @@
-const Flight = require('../models/flight');
+// const Flight = require('../models/flight');
 
+// module.exports = {
+//     index,
+//     new: newFlight,
+//     create
+// }
 
+// function index(req,res){
+//     Flight.find({},function(err,flights){
+//         if (err) return next(err)
+//         res.render('flights/index',{flights});
+//     });
+// }
+
+// function newFlight(req,res){
+//     res.render('flights/new')
+// }
+
+// function create(req,res){
+//     const flight = new Flight(req.body);
+//     flight.save(function(err){
+//         // if (err){
+//         //     console.log(err)
+//         //     res.render('flights/new') }//returning flights/new page again
+//         res.redirect('/flights');
+//     })
+// }
+
+const Flight = require("../models/flight");
 module.exports = {
-    index,
-    new: newFlight,
-    create
+  index,
+  new: newFlight,
+  create
+};
+function index(req, res) {
+  Flight.find({}, function(err, flights) {
+    if (err) return next(err);
+    res.render("flights/index", { flights });
+  });
 }
-
-function index(req,res){
-    Flight.find({},function(err,flights){
-        if (err) return next(err)
-        res.render('flights/index',{flights});
-    });
+function newFlight(req, res) {
+  res.render("flights/new");
 }
-
-function newFlight(req,res){
-    res.render('flights/new')
-}
-
-function create(req,res){
-    const flight = new Flight(req.body);
-    flight.save(function(err){
-        if (err) return res.render('flights/new') //returning flights/new page again
-        res.redirect('/flights');
-    })
+function create(req, res) {
+  const flight = new Flight(req.body);
+  flight.save(function(err) {
+    if (err) return res.render("flights/new");
+    res.redirect("flights/");
+  });
 }
