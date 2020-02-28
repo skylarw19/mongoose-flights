@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<title>New Flight</title>
+</head>
+<body>
+	<h2>Add new flight</h2>
+    <form action="/flights" method="POST">
+        <div><%=flight.airport  %> </div>
+        <label>Origin Airport
+			<select name="airport" value="<%= flight.airport %>">
+				<option value="AUS">AUS</option>
+				<option value="DAL">DAL</option>
+				<option value="LAX">LAX</option>
+				<option value="SAN">SAN</option>
+				<option value="SEA">SEA</option>
+			</select>
+		</label><br>
+        <label>Airline
+			<select name="airline" value="<%= flight.airline %>">
+				<option value="American">American</option>
+				<option value="Southwest">Southwest</option>
+				<option value="United">United</option>
+			</select>
+		</label><br>
+		<label>Flight No:
+			<input type="text" name="flightNo" value=<%= flight.flightNo %>>
+		</label><br>
+		<label>Departs:
+			<input type="datetime-local" name="departs" value=<%= flight.departs %>> 
+        </label><br>
+		<input type="submit" value="Update Flight">
+	</form>
+</body>
+</html>

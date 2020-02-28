@@ -13,7 +13,10 @@
         <div>Departure Date&Time: <%= flight.departs %></div>
         <br>
     </section>
-
+    <form action="/flights/<%= flight._id %>/edit" method="GET">
+      <button type="submit">Change Flight Details</button>
+    </form>
+    <br>
     <section>
         <form action="/flights/<%= flight._id %>" method="POST">
             <label>Destination Airport: 
@@ -29,7 +32,9 @@
                 <input type="datetime-local" name="arrival">
             </label><br><br>
             <input type="submit" value="Update">
+      
         </form>
+        
     <br>
     <% if (flight.destinations.length) { %>
         <table>
@@ -67,13 +72,14 @@
         <thead>
           <tr>
             <th>Seat</th>
+            <th>Price</th>
           </tr>
         </thead>
         <tbody>
           <% tickets.forEach(function(t) { %>
             <tr>
               <td><%= t.seat %></td>
-              <td><%= t.price %></td>
+              <td>$<%= t.price %></td>
             </tr>
           <% }); %>
         </tbody>
