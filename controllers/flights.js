@@ -20,6 +20,11 @@ function newFlight(req, res) {
   res.render("flights/new");
 }
 function create(req, res) {
+  if(!req.body.departs){
+    var redate = new Date();
+    redate.setFullYear(redate.getFullYear()+1);
+    req.body.departs = redate;
+  }
   const flight = new Flight(req.body);
   flight.save(function(err) {
     if (err) return res.render("flights/new");
@@ -51,7 +56,15 @@ function showUpdate(req,res){
 }
 
 function update(req,res){
-
+  console.log('hello')
+  // if(!req.body.departs){
+  //   var redate = new Date();
+  //   redate.setFullYear(redate.getFullYear()+1);
+  //   req.body.departs = redate;
+  // }
+  Flight.findByIdAndUpdate(req.params.id, req.body, function(err, flight){
+    res.redirect('/flights/');
+  })
 }
 
 // const Flight = require('../models/flight');

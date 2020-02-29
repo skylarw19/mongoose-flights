@@ -4,14 +4,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel='stylesheet' href='/stylesheets/style.css' />
-	<title>New Flight</title>
+	<title>Update Flight</title>
 </head>
 <body>
-	<h2>Add new flight</h2>
-    <form action="/flights" method="POST">
-        <div><%=flight.airport  %> </div>
+	<h2>Update flight</h2>
+    <form action="/flights/<%=flight._id%>?_method=PUT" method="POST">
         <label>Origin Airport
-			<select name="airport" value="<%= flight.airport %>">
+            <select name="airport" value="<%= flight.airport %>">
+                <option value="<%=flight.airport%>"><%=flight.airport%></option>
 				<option value="AUS">AUS</option>
 				<option value="DAL">DAL</option>
 				<option value="LAX">LAX</option>
@@ -20,7 +20,8 @@
 			</select>
 		</label><br>
         <label>Airline
-			<select name="airline" value="<%= flight.airline %>">
+            <select name="airline" value="<%= flight.airline %>">
+                <option value="<%=flight.airline%>"><%=flight.airline%></option>
 				<option value="American">American</option>
 				<option value="Southwest">Southwest</option>
 				<option value="United">United</option>
